@@ -1,6 +1,30 @@
 <html>
   <head>
     <title> Image Site Online </title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          const images = document.querySelectorAll("img");
+          
+          images.forEach(img => {
+              img.addEventListener("click", function () {
+                  shuffleImages();
+              });
+          });
+      
+          function shuffleImages() {
+              const imgArray = Array.from(images);
+              const parent = images[0].parentNode;
+              
+              // Get the current srcs in a shuffled order
+              const shuffledSrcs = imgArray.map(img => img.src).sort(() => Math.random() - 0.5);
+              
+              // Assign shuffled srcs to images
+              imgArray.forEach((img, index) => {
+                  img.src = shuffledSrcs[index];
+              });
+          }
+      });
+    </script>
   </head>
   <body>
     <h1>আমি নিচে আমার ভালো লাগে সেরকম কিছু ছবির একটা গ্যালারি দিচ্ছি </h1>
@@ -8,11 +32,11 @@
     <img src="1740413829081.jpg">
     <img src="IMG_20240223_184001_124~2_1.jpg">
     <img src="1740413829081.jpg">
- <style>
-   img {
-    height: 300px;
-     width: 350px;
-   }
- </style>
+    <style>
+      img {
+        height: 300px;
+        width: 350px;
+      }
+    </style>
   </body>
 </html>
